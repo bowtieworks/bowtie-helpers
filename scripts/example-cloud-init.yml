@@ -1,0 +1,8 @@
+#cloud-config
+hostname: ci-bowtie-client
+ssh_authorized_keys:
+  - ssh-ed25519 AAAAhIkuvge.....dontletmein issac@bowtie.works
+
+runcmd:
+  - [ bash, -c, "cd /home/ubuntu && curl -fsSL https://raw.githubusercontent.com/bowtieworks/bowtie-helpers/refs/heads/main/scripts/install-a-client.sh -o install-a-client.sh && chmod +x install-a-client.sh" ]
+  - [ bash, -c, "cd /home/ubuntu && JOIN_HELPER_URL=https://your-lambda-api-gateway.us-east-2.amazonaws.com/default/joinhelper1 JOIN_HELPER_PSK=keepitsafe CONTROLLER_ONE_URL=https://path-to-one.bowtie.example/ CONTROLLER_TWO_URL=https://path-to-two.bowtie.example/ ./install-a-client.sh" ]
