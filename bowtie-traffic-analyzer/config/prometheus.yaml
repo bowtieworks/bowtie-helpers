@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'bowtie-federation'
+
+scrape_configs:
+  - job_name: 'bowtie-controllers'
+    static_configs:
+      - targets:
+        - '10.100.0.127:9092'  # Controller 1 WG IP
+        - '10.100.0.146:9092'  # Controller 2 WG IP
+    metric_relabel_configs:
+      # Keep the appliance_id label to distinguish controllers
+      - source_labels: [appliance_id]
+        target_label: controller
