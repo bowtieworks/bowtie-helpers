@@ -21,7 +21,7 @@ Spin up a local Prometheus instance pre-configured to federate client traffic me
 docker info
 
 # Clone and install
-git clone https://github.com/bowtieworks/bowtie-helpers/bowtie-traffic-analyzer.git
+git clone https://github.com/bowtieworks/bowtie-helpers.git
 cd bowtie-traffic-analyzer
 pip3 install -r requirements.txt
 ```
